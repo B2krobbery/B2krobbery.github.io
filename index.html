@@ -7,7 +7,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: radial-gradient(circle at top, #0f2027, #000000);
             color: white;
             text-align: center;
         }
@@ -18,10 +18,12 @@
 
         h1 {
             font-size: 50px;
+            text-shadow: 0 0 10px cyan;
         }
 
         h2 {
-            color: #00ffff;
+            color: cyan;
+            text-shadow: 0 0 5px cyan;
         }
 
         p {
@@ -29,20 +31,32 @@
         }
 
         a {
-            color: #00ffff;
+            color: cyan;
             text-decoration: none;
             font-weight: bold;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: white;
+            text-shadow: 0 0 10px cyan;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             padding: 20px;
             margin: 20px auto;
             width: 300px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0,255,255,0.2);
         }
 
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px cyan;
+        }
     </style>
 </head>
 
@@ -65,9 +79,10 @@
         </div>
 
         <div class="card">
-            <h3>🚀 About Me</h3>
-            <p>I build projects and explore new ideas.</p>
-            <p>Interested in engineering, design, and innovation.</p>
+            <h3>🚀 Interests</h3>
+            <p>Engineering projects and innovation</p>
+            <p>Open-source contribution</p>
+            <p>Creative problem solving</p>
         </div>
 
     </div>
