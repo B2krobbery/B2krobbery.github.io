@@ -7,13 +7,28 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: radial-gradient(circle at top, #0f2027, #000000);
+            background: black;
             color: white;
             text-align: center;
+            overflow: hidden;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
 
         .container {
             margin-top: 100px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         h1 {
@@ -26,8 +41,11 @@
             text-shadow: 0 0 5px cyan;
         }
 
-        p {
-            font-size: 18px;
+        #typing {
+            font-size: 20px;
+            color: cyan;
+            margin-top: 10px;
+            height: 25px;
         }
 
         a {
@@ -62,30 +80,82 @@
 
 <body>
 
-    <div class="container">
-        <h1>Hi, I'm Visal Vijay 👋</h1>
-        <h2>B2krobbery</h2>
+<canvas id="bg"></canvas>
 
-        <p>ELC Student | Open Source Contributor</p>
+<div class="container">
+    <h1>Hi, I'm Visal Vijay 👋</h1>
+    <h2>B2krobbery</h2>
 
-        <div class="card">
-            <h3>💻 Profiles</h3>
-            <p>
-                <a href="https://github.com/B2krobbery">GitHub</a>
-            </p>
-            <p>
-                <a href="https://www.instructables.com/member/visalvijay83/">Instructables</a>
-            </p>
-        </div>
+    <div id="typing"></div>
 
-        <div class="card">
-            <h3>🚀 Interests</h3>
-            <p>Engineering projects and innovation</p>
-            <p>Open-source contribution</p>
-            <p>Creative problem solving</p>
-        </div>
-
+    <div class="card">
+        <h3>💻 Profiles</h3>
+        <p><a href="https://github.com/B2krobbery">GitHub</a></p>
+        <p><a href="https://www.instructables.com/member/visalvijay83/">Instructables</a></p>
     </div>
+
+    <div class="card">
+        <h3>🚀 Interests</h3>
+        <p>Engineering projects and innovation</p>
+        <p>Open-source contribution</p>
+        <p>Creative problem solving</p>
+    </div>
+</div>
+
+<script>
+    // Typing effect
+    const text = "ELC Student | Open Source Contributor";
+    let i = 0;
+    function typeEffect() {
+        if (i < text.length) {
+            document.getElementById("typing").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeEffect, 50);
+        }
+    }
+    window.onload = typeEffect;
+
+    // Particle background
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+
+    for (let i = 0; i < 100; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2,
+            speedX: (Math.random() - 0.5),
+            speedY: (Math.random() - 0.5)
+        });
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "cyan";
+
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+
+            p.x += p.speedX;
+            p.y += p.speedY;
+
+            if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+</script>
 
 </body>
 </html>
