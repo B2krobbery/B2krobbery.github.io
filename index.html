@@ -10,7 +10,7 @@
             background: black;
             color: white;
             text-align: center;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         canvas {
@@ -22,58 +22,52 @@
 
         .container {
             margin-top: 100px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
         }
 
         h1 {
-            font-size: 50px;
+            font-size: 48px;
+            margin: 0;
             text-shadow: 0 0 10px cyan;
         }
 
         h2 {
             color: cyan;
+            margin-top: 5px;
             text-shadow: 0 0 5px cyan;
         }
 
         #typing {
-            font-size: 20px;
+            font-size: 18px;
             color: cyan;
             margin-top: 10px;
             height: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 20px;
+            margin: 25px auto;
+            width: 320px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0,255,255,0.15);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px cyan;
         }
 
         a {
             color: cyan;
             text-decoration: none;
             font-weight: bold;
-            transition: 0.3s;
         }
 
         a:hover {
             color: white;
             text-shadow: 0 0 10px cyan;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 20px;
-            margin: 20px auto;
-            width: 300px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-            box-shadow: 0 0 10px rgba(0,255,255,0.2);
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px cyan;
         }
 
         .tag {
@@ -82,13 +76,19 @@
             padding: 5px 10px;
             margin: 5px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
             transition: 0.3s;
         }
 
         .tag:hover {
             background: cyan;
             color: black;
+        }
+
+        .focus-text {
+            font-size: 14px;
+            opacity: 0.85;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -103,12 +103,14 @@
 
     <div id="typing"></div>
 
+    <!-- Profiles -->
     <div class="card">
         <h3>Profiles</h3>
         <p><a href="https://github.com/B2krobbery">GitHub</a></p>
         <p><a href="https://www.instructables.com/member/visalvijay83/">Instructables</a></p>
     </div>
 
+    <!-- What I Do -->
     <div class="card">
         <h3>What I Do</h3>
         <div class="tag">Fixing Bugs</div>
@@ -117,6 +119,16 @@
         <div class="tag">Problem Solving</div>
         <div class="tag">Learning by Building</div>
     </div>
+
+    <!-- Focus -->
+    <div class="card">
+        <h3>Focus</h3>
+        <p class="focus-text">
+            Currently improving development skills by building projects, fixing real-world bugs,
+            and contributing to open-source communities.
+        </p>
+    </div>
+
 </div>
 
 <script>
@@ -153,7 +165,6 @@
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         ctx.fillStyle = "cyan";
 
         particles.forEach(p => {
