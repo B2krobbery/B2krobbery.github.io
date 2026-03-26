@@ -75,6 +75,21 @@
             transform: scale(1.05);
             box-shadow: 0 0 20px cyan;
         }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid cyan;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            background: cyan;
+            color: black;
+        }
     </style>
 </head>
 
@@ -83,28 +98,30 @@
 <canvas id="bg"></canvas>
 
 <div class="container">
-    <h1>Hi, I'm Visal Vijay 👋</h1>
+    <h1>Visal Vijay</h1>
     <h2>B2krobbery</h2>
 
     <div id="typing"></div>
 
     <div class="card">
-        <h3>💻 Profiles</h3>
+        <h3>Profiles</h3>
         <p><a href="https://github.com/B2krobbery">GitHub</a></p>
         <p><a href="https://www.instructables.com/member/visalvijay83/">Instructables</a></p>
     </div>
 
     <div class="card">
-        <h3>🚀 Interests</h3>
-        <p>Engineering projects and innovation</p>
-        <p>Open-source contribution</p>
-        <p>Creative problem solving</p>
+        <h3>What I Do</h3>
+        <div class="tag">Fixing Bugs</div>
+        <div class="tag">Building Projects</div>
+        <div class="tag">Open Source</div>
+        <div class="tag">Problem Solving</div>
+        <div class="tag">Learning by Building</div>
     </div>
 </div>
 
 <script>
     // Typing effect
-    const text = "ELC Student | Open Source Contributor";
+    const text = "ELC Student | Builder | Open Source";
     let i = 0;
     function typeEffect() {
         if (i < text.length) {
