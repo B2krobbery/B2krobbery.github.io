@@ -20,20 +20,47 @@
             z-index: -1;
         }
 
+        /* 🔥 BACKGROUND GLOW */
+        .glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, cyan, transparent 70%);
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -2;
+            animation: float 10s ease-in-out infinite alternate;
+        }
+
+        .glow1 { top: 10%; left: 20%; }
+        .glow2 { bottom: 10%; right: 20%; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(40px); }
+        }
+
         .container {
-            margin-top: 100px;
+            margin-top: 80px;
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 52px;
             margin: 0;
-            text-shadow: 0 0 10px cyan;
+
+            background: linear-gradient(90deg, cyan, #00f7ff);
+            -webkit-background-clip: text;
+            color: transparent;
+
+            text-shadow:
+                0 0 20px rgba(0,255,255,0.6),
+                0 0 40px rgba(0,255,255,0.25);
         }
 
         h2 {
             color: cyan;
             margin-top: 5px;
-            text-shadow: 0 0 5px cyan;
+            text-shadow: 0 0 10px cyan;
         }
 
         #typing {
@@ -43,46 +70,76 @@
             height: 25px;
         }
 
+        /* 🔥 FIXED CARD (ALL SAME LIKE FIRST BOX) */
         .card {
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.06);
             padding: 20px;
             margin: 25px auto;
             width: 320px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(0,255,255,0.3);
+
+            box-shadow:
+                0 0 20px rgba(0,255,255,0.4),
+                0 0 40px rgba(0,255,255,0.2);
+
             transition: 0.3s;
-            box-shadow: 0 0 10px rgba(0,255,255,0.15);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px cyan;
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 0 30px cyan,
+                0 0 60px rgba(0,255,255,0.4);
         }
 
+        /* 🔥 STRONG LINKS (buttons feel same strength) */
         a {
+            display: inline-block;
+            margin: 8px 0;
+            padding: 8px 14px;
+
+            border: 1px solid cyan;
+            border-radius: 6px;
+
             color: cyan;
             text-decoration: none;
             font-weight: bold;
+
+            transition: 0.25s;
         }
 
         a:hover {
-            color: white;
-            text-shadow: 0 0 10px cyan;
+            background: cyan;
+            color: black;
+
+            box-shadow:
+                0 0 10px cyan,
+                0 0 25px rgba(0,255,255,0.4);
+
+            transform: translateY(-2px);
         }
 
+        /* 🔥 TAGS MATCH CARD STRENGTH */
         .tag {
             display: inline-block;
             border: 1px solid cyan;
-            padding: 5px 10px;
+            padding: 6px 12px;
             margin: 5px;
             border-radius: 20px;
             font-size: 13px;
+
+            box-shadow: 0 0 8px rgba(0,255,255,0.3);
             transition: 0.3s;
         }
 
         .tag:hover {
             background: cyan;
             color: black;
+            box-shadow: 0 0 15px cyan;
         }
 
         .focus-text {
@@ -94,6 +151,10 @@
 </head>
 
 <body>
+
+<!-- 🔥 GLOW BACKGROUND -->
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
 
 <canvas id="bg"></canvas>
 
@@ -132,57 +193,58 @@
 </div>
 
 <script>
-    // Typing effect
-    const text = "ELC Student | Builder | Open Source";
-    let i = 0;
-    function typeEffect() {
-        if (i < text.length) {
-            document.getElementById("typing").innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeEffect, 50);
-        }
+// typing
+const text = "ELC Student | Builder | Open Source";
+let i = 0;
+
+function typeEffect() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 50);
     }
-    window.onload = typeEffect;
+}
+window.onload = typeEffect;
 
-    // Particle background
-    const canvas = document.getElementById("bg");
-    const ctx = canvas.getContext("2d");
+// particles
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    let particles = [];
+let particles = [];
 
-    for (let i = 0; i < 100; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 2,
-            speedX: (Math.random() - 0.5),
-            speedY: (Math.random() - 0.5)
-        });
-    }
+for (let i = 0; i < 100; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        speedX: (Math.random() - 0.5),
+        speedY: (Math.random() - 0.5)
+    });
+}
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "cyan";
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(0,255,255,0.7)"; /* slightly softer */
 
-        particles.forEach(p => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fill();
+    particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
 
-            p.x += p.speedX;
-            p.y += p.speedY;
+        p.x += p.speedX;
+        p.y += p.speedY;
 
-            if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-        });
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+    });
 
-        requestAnimationFrame(animate);
-    }
+    requestAnimationFrame(animate);
+}
 
-    animate();
+animate();
 </script>
 
 </body>
