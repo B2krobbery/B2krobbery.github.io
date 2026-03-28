@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>B2krobbery</title>
+    <title>B2krobbery | Developer</title>
 
     <style>
         body {
@@ -21,7 +21,7 @@
         }
 
         .container {
-            margin-top: 100px;
+            margin-top: 80px;
         }
 
         h1 {
@@ -33,7 +33,6 @@
         h2 {
             color: cyan;
             margin-top: 5px;
-            text-shadow: 0 0 5px cyan;
         }
 
         #typing {
@@ -43,18 +42,15 @@
             height: 25px;
         }
 
-        /* 🔥 UPGRADED CARD GLOW (ONLY CHANGE) */
         .card {
             background: rgba(255, 255, 255, 0.07);
             padding: 20px;
             margin: 25px auto;
-            width: 320px;
+            width: 340px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
             transition: 0.3s;
-
             border: 1px solid rgba(0,255,255,0.4);
-
             box-shadow:
                 0 0 15px rgba(0,255,255,0.3),
                 0 0 30px rgba(0,255,255,0.15);
@@ -62,7 +58,6 @@
 
         .card:hover {
             transform: translateY(-5px);
-
             box-shadow:
                 0 0 25px cyan,
                 0 0 50px rgba(0,255,255,0.4);
@@ -76,7 +71,6 @@
 
         a:hover {
             color: white;
-            text-shadow: 0 0 10px cyan;
         }
 
         .tag {
@@ -86,31 +80,10 @@
             margin: 5px;
             border-radius: 20px;
             font-size: 13px;
-            transition: 0.3s;
         }
 
-        .tag:hover {
-            background: cyan;
-            color: black;
-        }
-
-        .what-text {
-            display: block;
-            color: cyan;
-            margin: 6px 0;
-            font-size: 14px;
-            transition: 0.2s;
-        }
-
-        .what-text:hover {
-            color: white;
-            text-shadow: 0 0 10px cyan;
-        }
-
-        .focus-text {
-            font-size: 14px;
-            opacity: 0.85;
-            line-height: 1.5;
+        .project {
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -125,6 +98,46 @@
 
     <div id="typing"></div>
 
+    <!-- About -->
+    <div class="card">
+        <h3>About</h3>
+        <p>
+            I am an open-source contributor focused on Linux, Wayland, and system-level development.
+            I enjoy fixing real-world bugs and building practical tools.
+        </p>
+    </div>
+
+    <!-- Projects -->
+    <div class="card">
+        <h3>Projects</h3>
+
+        <div class="project">
+            🔧 Waybar Contributions<br>
+            <a href="https://github.com/Alexays/Waybar">View Repo</a>
+        </div>
+
+        <div class="project">
+            ⚙️ Hyprland Related Work<br>
+            <a href="https://github.com/hyprwm/Hyprland">View Repo</a>
+        </div>
+
+        <div class="project">
+            🧪 Personal Tools & Experiments<br>
+            <a href="https://github.com/B2krobbery">My GitHub</a>
+        </div>
+
+    </div>
+
+    <!-- Skills -->
+    <div class="card">
+        <h3>Skills</h3>
+        <span class="tag">C++ (Learning)</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Arch / Hyprland</span>
+        <span class="tag">Wayland</span>
+        <span class="tag">Git & GitHub</span>
+    </div>
+
     <!-- Profiles -->
     <div class="card">
         <h3>Profiles</h3>
@@ -132,36 +145,17 @@
         <p><a href="https://www.instructables.com/member/visalvijay83/">Instructables</a></p>
     </div>
 
-    <!-- What I Do -->
-    <div class="card">
-        <h3>What I Do</h3>
-        <div class="what-text">Fixing Bugs</div>
-        <div class="what-text">Building Projects</div>
-        <div class="what-text">Open Source</div>
-        <div class="what-text">Problem Solving</div>
-        <div class="what-text">Learning by Building</div>
-    </div>
-
-    <!-- Focus -->
-    <div class="card">
-        <h3>Focus</h3>
-        <p class="focus-text">
-            Currently improving development skills by building projects, fixing real-world bugs,
-            and contributing to open-source communities.
-        </p>
-    </div>
-
 </div>
 
 <script>
-const text = "ELC Student | Builder | Open Source";
+const text = "Software Developer | Open Source Contributor | Linux";
 let i = 0;
 
 function typeEffect() {
     if (i < text.length) {
         document.getElementById("typing").innerHTML += text.charAt(i);
         i++;
-        setTimeout(typeEffect, 50);
+        setTimeout(typeEffect, 40);
     }
 }
 window.onload = typeEffect;
