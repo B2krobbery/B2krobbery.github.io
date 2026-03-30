@@ -1,205 +1,220 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>B2krobbery | Developer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2krobbery | Elite Dev</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: black;
-            color: white;
-            text-align: center;
-            overflow-x: hidden;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a2d9d5c6f0.js" crossorigin="anonymous"></script>
 
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
 
-        .container {
-            margin-top: 80px;
-        }
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: black;
+    color: cyan;
+    overflow-x: hidden;
+}
 
-        h1 {
-            font-size: 48px;
-            margin: 0;
-            text-shadow: 0 0 10px cyan;
-        }
+canvas {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
 
-        h2 {
-            color: cyan;
-            margin-top: 5px;
-        }
+nav {
+    position: fixed;
+    top:0;
+    width:100%;
+    padding:15px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+}
 
-        #typing {
-            font-size: 18px;
-            color: cyan;
-            margin-top: 10px;
-            height: 25px;
-        }
+nav a {
+    color: cyan;
+    text-decoration:none;
+    transition:0.3s;
+}
 
-        .card {
-            background: rgba(255, 255, 255, 0.07);
-            padding: 20px;
-            margin: 25px auto;
-            width: 340px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-            border: 1px solid rgba(0,255,255,0.4);
-            box-shadow:
-                0 0 15px rgba(0,255,255,0.3),
-                0 0 30px rgba(0,255,255,0.15);
-        }
+nav a:hover {
+    text-shadow:0 0 10px cyan;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow:
-                0 0 25px cyan,
-                0 0 50px rgba(0,255,255,0.4);
-        }
+.container {
+    text-align:center;
+    margin-top:120px;
+    padding:20px;
+}
 
-        a {
-            color: cyan;
-            text-decoration: none;
-            font-weight: bold;
-        }
+h1 {
+    font-size:60px;
+    text-shadow:0 0 20px cyan,0 0 40px cyan;
+    animation: glow 2s infinite alternate;
+}
 
-        a:hover {
-            color: white;
-        }
+@keyframes glow {
+    from { text-shadow:0 0 10px cyan; }
+    to { text-shadow:0 0 30px cyan,0 0 60px cyan; }
+}
 
-        .tag {
-            display: inline-block;
-            border: 1px solid cyan;
-            padding: 5px 10px;
-            margin: 5px;
-            border-radius: 20px;
-            font-size: 13px;
-        }
+#typing { margin-top:10px; height:30px; }
 
-        .project {
-            margin: 10px 0;
-        }
-    </style>
+.card {
+    margin:30px auto;
+    padding:25px;
+    max-width:400px;
+    border-radius:20px;
+    background: rgba(0,255,255,0.05);
+    border:1px solid cyan;
+    transition:0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow:0 0 30px cyan;
+}
+
+.project {
+    margin:15px 0;
+}
+
+.tag {
+    display:inline-block;
+    border:1px solid cyan;
+    padding:6px 12px;
+    margin:5px;
+    border-radius:20px;
+}
+
+button {
+    margin-top:10px;
+    padding:10px 20px;
+    border:none;
+    background: cyan;
+    color:black;
+    cursor:pointer;
+}
+
+footer {
+    margin:40px 0;
+    opacity:0.5;
+}
+</style>
 </head>
 
 <body>
 
 <canvas id="bg"></canvas>
 
+<nav>
+<a href="#">Home</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+</nav>
+
 <div class="container">
-    <h1>Visal Vijay</h1>
-    <h2>B2krobbery</h2>
+<h1>VISAL VIJAY</h1>
+<h2>B2krobbery</h2>
+<div id="typing"></div>
 
-    <div id="typing"></div>
+<div class="card">
+<h3><i class="fas fa-user"></i> Profile</h3>
+<img src="https://avatars.githubusercontent.com/u/00000000?v=4" alt="profile" style="width:100px;border-radius:50%;margin-bottom:10px;border:2px solid cyan;">
+<h4>Visal Vijay</h4>
+<p>@B2krobbery</p>
+<p>ELC Engineering Student | Linux & Open Source Developer</p>
+<a href="https://github.com/B2krobbery">View GitHub</a>
+</div>
 
-    <!-- About -->
-    <div class="card">
-        <h3>About</h3>
-        <p>
-            <p>
-I am an ELC engineering student and an active open-source contributor focused on Linux, Wayland, and system-level development.
-I enjoy learning by building real-world projects, fixing bugs, and exploring how systems work at a deeper level.
-</p>
-        </p>
-    </div>
+<div class="card">
+<h3><i class="fas fa-user"></i> About</h3>
+<p>Linux-focused developer working on Wayland, Hyprland and system-level projects.</p>
+</div>
 
-    <!-- Projects -->
-    <div class="card">
-        <h3>Projects</h3>
+<div class="card" id="projects">
+<h3><i class="fas fa-code"></i> Projects</h3>
+<div class="project">Waybar Contributions</div>
+<div class="project">Hyprland Work</div>
+<div class="project">Custom Tools</div>
+</div>
 
-        <div class="project">
-              Waybar Contributions<br>
-            <a href="https://github.com/Alexays/Waybar">View Repo</a>
-        </div>
+<div class="card" id="skills">
+<h3><i class="fas fa-bolt"></i> Skills</h3>
+<span class="tag">C++</span>
+<span class="tag">Linux</span>
+<span class="tag">Wayland</span>
+<span class="tag">Git</span>
+</div>
 
-        <div class="project">
-              Hyprland Related Work<br>
-            <a href="https://github.com/hyprwm/Hyprland">View Repo</a>
-        </div>
+<div class="card">
+<h3><i class="fas fa-chart-line"></i> GitHub Stats</h3>
+<img src="https://github-readme-stats.vercel.app/api?username=B2krobbery&theme=tokyonight">
+</div>
 
-        <div class="project">
-              Personal Tools & Experiments<br>
-            <a href="https://github.com/B2krobbery">My GitHub</a>
-        </div>
+<button onclick="toggleTheme()">Toggle Theme</button>
 
-    </div>
-
-    <!-- Skills -->
-    <div class="card">
-        <h3>Skills</h3>
-        <span class="tag">C++ (Learning)</span>
-        <span class="tag">Linux</span>
-        <span class="tag">Arch / Hyprland</span>
-        <span class="tag">Wayland</span>
-        <span class="tag">Git & GitHub</span>
-    </div>
-
-    <!-- Profiles -->
-    <div class="card">
-        <h3>Profiles</h3>
-        <p><a href="https://github.com/B2krobbery">GitHub</a></p>
-        <p><a href="https://www.instructables.com/member/visalvijay83/">Instructables</a></p>
-    </div>
-
+<footer>Built by B2krobbery ⚡</footer>
 </div>
 
 <script>
-const text = "Software Developer | Open Source Contributor | Linux";
-let i = 0;
-
-function typeEffect() {
-    if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeEffect, 40);
-    }
+const text = "Elite Developer | Open Source | Linux";
+let i=0;
+function type(){
+ if(i<text.length){
+ document.getElementById("typing").innerHTML+=text[i];
+ i++;
+ setTimeout(type,40);
+ }
 }
-window.onload = typeEffect;
+window.onload=type;
 
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for (let i = 0; i < 100; i++) {
-    particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2,
-        speedX: (Math.random() - 0.5),
-        speedY: (Math.random() - 0.5)
-    });
+function toggleTheme(){
+ document.body.style.background = document.body.style.background==="white" ? "black":"white";
+ document.body.style.color = document.body.style.color==="black" ? "cyan":"black";
 }
 
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "cyan";
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
 
-    particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-    });
-
-    requestAnimationFrame(animate);
+let particles=[];
+for(let i=0;i<120;i++){
+ particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5),vy:(Math.random()-0.5)});
 }
 
-animate();
+function draw(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ for(let p of particles){
+ ctx.beginPath();
+ ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ ctx.fillStyle="cyan";
+ ctx.fill();
+ p.x+=p.vx; p.y+=p.vy;
+
+ for(let q of particles){
+ let dx=p.x-q.x, dy=p.y-q.y;
+ let dist=Math.sqrt(dx*dx+dy*dy);
+ if(dist<100){
+ ctx.beginPath();
+ ctx.moveTo(p.x,p.y);
+ ctx.lineTo(q.x,q.y);
+ ctx.strokeStyle="rgba(0,255,255,0.1)";
+ ctx.stroke();
+ }
+ }
+ }
+ requestAnimationFrame(draw);
+}
+
+draw();
 </script>
 
 </body>
