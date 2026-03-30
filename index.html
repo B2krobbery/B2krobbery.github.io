@@ -72,7 +72,7 @@ h1 {
     padding:25px;
     max-width:400px;
     border-radius:20px;
-    background: rgba(0,255,255,0.05);
+    background: rgba(255,255,255,0.05);
     border:1px solid cyan;
     transition:0.4s;
 }
@@ -82,9 +82,7 @@ h1 {
     box-shadow:0 0 30px cyan;
 }
 
-.project {
-    margin:15px 0;
-}
+.project { margin:15px 0; }
 
 .tag {
     display:inline-block;
@@ -103,10 +101,7 @@ button {
     cursor:pointer;
 }
 
-footer {
-    margin:40px 0;
-    opacity:0.5;
-}
+footer { margin:40px 0; opacity:0.5; }
 </style>
 </head>
 
@@ -161,7 +156,6 @@ footer {
 </div>
 
 </div>
-</div>
 
 <div class="card" id="skills">
 <h3><i class="fas fa-bolt"></i> Skills</h3>
@@ -175,8 +169,10 @@ footer {
 <button onclick="toggleTheme()">Toggle Theme</button>
 <footer>Built by B2krobbery ⚡</footer>
 </div>
+</div>
 
 <script>
+// typing
 const text = "Student Developer | Linux | System Programming";
 let i=0;
 function type(){
@@ -188,11 +184,52 @@ function type(){
 }
 window.onload=type;
 
+// THEMES (fixed)
+let themeIndex = 0;
+const themes = [
+    { name: "Cyan", bg: "#000000", text: "#e5e7eb", accent: "cyan" },
+    { name: "Blue", bg: "#0f172a", text: "#e5e7eb", accent: "#38bdf8" },
+    { name: "Green", bg: "#111827", text: "#e5e7eb", accent: "#22c55e" },
+    { name: "Yellow", bg: "#1a1a1a", text: "#e5e7eb", accent: "#facc15" }
+];
+
 function toggleTheme(){
- document.body.style.background = document.body.style.background==="white" ? "black":"white";
- document.body.style.color = document.body.style.color==="black" ? "cyan":"black";
+    themeIndex = (themeIndex + 1) % themes.length;
+    const t = themes[themeIndex];
+
+    document.body.style.background = t.bg;
+    document.body.style.color = t.text;
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.style.borderColor = t.accent;
+        card.style.boxShadow = `0 0 20px ${t.accent}`;
+    });
+
+    document.querySelectorAll('a').forEach(a => {
+        a.style.color = t.accent;
+    });
+
+    document.querySelector('h1').style.textShadow = `0 0 20px ${t.accent}, 0 0 40px ${t.accent}`;
+
+    let label = document.getElementById('theme-label');
+    if (!label) {
+        label = document.createElement('div');
+        label.id = 'theme-label';
+        label.style.position = 'fixed';
+        label.style.bottom = '20px';
+        label.style.right = '20px';
+        label.style.padding = '6px 12px';
+        label.style.borderRadius = '8px';
+        label.style.fontSize = '12px';
+        document.body.appendChild(label);
+    }
+
+    label.innerText = `Theme: ${t.name}`;
+    label.style.color = t.accent;
+    label.style.border = '1px solid ' + t.accent;
 }
 
+// particles
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
 canvas.width=innerWidth;
