@@ -214,12 +214,24 @@ footer { margin:40px 0; opacity:0.5; }
 
 <script>
 
-// CONTACT FORM HANDLER
+// CONTACT FORM HANDLER (with toxic filter)
 const form = document.getElementById('contact-form');
 const status = document.getElementById('status');
 
+const badWords = ["idiot", "stupid", "hate", "noob", "trash"];
+
 form.addEventListener('submit', async function(e) {
     e.preventDefault();
+
+    const message = form.message.value.toLowerCase();
+
+    for (let word of badWords) {
+        if (message.includes(word)) {
+            status.innerText = "Please use respectful language.";
+            status.style.color = "orange";
+            return;
+        }
+    }
 
     const data = new FormData(form);
 
@@ -230,6 +242,16 @@ form.addEventListener('submit', async function(e) {
             'Accept': 'application/json'
         }
     });
+
+    if (response.ok) {
+        status.innerText = "Message sent successfully ✔";
+        status.style.color = "lime";
+        form.reset();
+    } else {
+        status.innerText = "Failed to send message ❌";
+        status.style.color = "red";
+    }
+});
 
     if (response.ok) {
         status.innerText = "Message sent successfully ✔";
