@@ -169,9 +169,78 @@ footer { margin:40px 0; opacity:0.5; }
 <button onclick="toggleTheme()">Toggle Theme</button>
 <footer>Built by B2krobbery ⚡</footer>
 </div>
+
+<div class="card" id="contact">
+<h3><i class="fas fa-envelope"></i> Contact</h3>
+
+<form id="contact-form" action="https://formspree.io/f/xojplpyo" method="POST">
+
+<input type="hidden" name="_subject" value="New message from portfolio">
+
+<input class="input" type="text" name="name" placeholder="Your Name" required>
+
+<input class="input" type="email" name="email" placeholder="Your Email" required>
+
+<textarea class="input" name="message" placeholder="Your Message" required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+<p id="status" style="margin-top:10px;font-size:14px;"></p>
+
 </div>
 
+</div>
+
+<style>
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid cyan;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: 0 0 10px cyan;
+}
+</style>
+
 <script>
+
+// CONTACT FORM HANDLER
+const form = document.getElementById('contact-form');
+const status = document.getElementById('status');
+
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        status.innerText = "Message sent successfully ✔";
+        status.style.color = "lime";
+        form.reset();
+    } else {
+        status.innerText = "Failed to send message ❌";
+        status.style.color = "red";
+    }
+});
+
+
 // typing
 const text = "Student Developer | Linux | System Programming";
 let i=0;
