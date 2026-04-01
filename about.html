@@ -3,56 +3,339 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | B2krobbery</title>
+<title>B2krobbery | Student Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a2d9d5c6f0.js" crossorigin="anonymous"></script>
 
 <style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Orbitron', sans-serif;
     background: black;
     color: cyan;
-    text-align: center;
+    overflow-x: hidden;
 }
+
+canvas {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+nav {
+    position: fixed;
+    top:0;
+    width:100%;
+    padding:15px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+}
+
+nav a {
+    color: cyan;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover {
+    text-shadow:0 0 10px cyan;
+}
+
+.container {
+    text-align:center;
+    margin-top:120px;
+    padding:20px;
+}
+
+h1 {
+    font-size:60px;
+    text-shadow:0 0 20px cyan,0 0 40px cyan;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow:0 0 10px cyan; }
+    to { text-shadow:0 0 30px cyan,0 0 60px cyan; }
+}
+
+#typing { margin-top:10px; height:30px; }
 
 .card {
-    margin: 80px auto;
-    padding: 25px;
-    max-width: 500px;
-    border-radius: 20px;
-    border: 1px solid cyan;
+    margin:30px auto;
+    padding:25px;
+    max-width:400px;
+    border-radius:20px;
+    background: rgba(255,255,255,0.05);
+    border:1px solid cyan;
+    transition:0.4s;
 }
 
-a {
-    color: cyan;
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow:0 0 30px cyan;
 }
+
+.project { margin:15px 0; }
+
+.tag {
+    display:inline-block;
+    border:1px solid cyan;
+    padding:6px 12px;
+    margin:5px;
+    border-radius:20px;
+}
+
+button {
+    margin-top:10px;
+    padding:10px 20px;
+    border:none;
+    background: cyan;
+    color:black;
+    cursor:pointer;
+}
+
+footer { margin:40px 0; opacity:0.5; }
 </style>
 </head>
 
 <body>
 
+<canvas id="bg"></canvas>
+
 <nav>
-<a href="index.html">Home</a> |
-<a href="projects.html">Projects</a> |
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
 <a href="about.html">About</a>
 </nav>
 
+<div class="container">
+<h1>VISAL VIJAY</h1>
+<h2>B2krobbery</h2>
+<div id="typing"></div>
+
 <div class="card">
-<h2>About Me</h2>
+<h3><i class="fas fa-user"></i> Profile</h3>
+<img src="https://github.com/B2krobbery.png" alt="profile" style="width:100px;border-radius:50%;margin-bottom:10px;border:2px solid cyan;">
+<h4>Visal Vijay</h4>
+<p>@B2krobbery</p>
+<p>ELC Engineering Student | Linux & Open Source Developer</p>
+<a href="https://github.com/B2krobbery">View GitHub</a>
+</div>
 
-<p>
-I am Visal, an ELC engineering student interested in Linux,
-Wayland, and system programming.
-</p>
+<div class="card">
+<h3><i class="fas fa-user"></i> About</h3>
+<p>Linux-focused developer working on Wayland, Hyprland and system-level projects.</p>
+<a href="about.html">Read more →</a>
+</div>
 
-<p>
-I enjoy debugging real issues, understanding how systems work,
-and contributing to open-source projects like Waybar and Hyprland.
-</p>
+<div class="card" id="projects">
+<h3><i class="fas fa-code"></i> Projects</h3>
 
-<p>
-Currently, I am learning C++ and exploring low-level development.
-</p>
+<div class="project">
+<strong>Waybar Contributions</strong>
+<p>Worked on debugging and fixing issues, including memory-related problems.</p>
+<a href="https://github.com/Alexays/Waybar" target="_blank">View Repo</a>
+</div>
+
+<div class="project">
+<strong>Hyprland Work</strong>
+<p>Explored compositor behavior, tested configs, and analyzed crashes.</p>
+<a href="https://github.com/hyprwm/Hyprland" target="_blank">View Repo</a>
+</div>
+
+<div class="project">
+<strong>Custom Tools</strong>
+<p>Personal experiments and small tools built while learning Linux systems.</p>
+<a href="https://github.com/B2krobbery" target="_blank">My GitHub</a>
+</div>
 
 </div>
+
+<div class="card" id="skills">
+<h3><i class="fas fa-bolt"></i> Skills</h3>
+<span class="tag">C++ (Learning)</span>
+<span class="tag">Linux</span>
+<span class="tag">Wayland</span>
+<span class="tag">Git</span>
+</div>
+
+<div class="card">
+<button onclick="toggleTheme()">Toggle Theme</button>
+<footer>Built by B2krobbery ⚡</footer>
+</div>
+
+<div class="card" id="contact">
+<h3><i class="fas fa-envelope"></i> Contact</h3>
+
+<form id="contact-form" action="https://formspree.io/f/xojplpyo" method="POST">
+
+<input type="hidden" name="_subject" value="New message from portfolio">
+
+<input class="input" type="text" name="name" placeholder="Your Name" required>
+
+<input class="input" type="email" name="email" placeholder="Your Email" required>
+
+<textarea class="input" name="message" placeholder="Your Message" required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+<p id="status" style="margin-top:10px;font-size:14px;"></p>
+
+</div>
+
+</div>
+
+<style>
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid cyan;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: 0 0 10px cyan;
+}
+</style>
+
+<script>
+
+// CONTACT FORM HANDLER
+const form = document.getElementById('contact-form');
+const status = document.getElementById('status');
+
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        status.innerText = "Message sent successfully ✔";
+        status.style.color = "lime";
+        form.reset();
+    } else {
+        status.innerText = "Failed to send message ❌";
+        status.style.color = "red";
+    }
+});
+
+
+// typing
+const text = "Student Developer | Linux | System Programming";
+let i=0;
+function type(){
+ if(i<text.length){
+ document.getElementById("typing").innerHTML+=text[i];
+ i++;
+ setTimeout(type,40);
+ }
+}
+window.onload=type;
+
+// THEMES (fixed)
+let themeIndex = 0;
+const themes = [
+    { name: "Cyan", bg: "#000000", text: "#e5e7eb", accent: "cyan" },
+    { name: "Blue", bg: "#0f172a", text: "#e5e7eb", accent: "#38bdf8" },
+    { name: "Green", bg: "#111827", text: "#e5e7eb", accent: "#22c55e" },
+    { name: "Yellow", bg: "#1a1a1a", text: "#e5e7eb", accent: "#facc15" }
+];
+
+function toggleTheme(){
+    themeIndex = (themeIndex + 1) % themes.length;
+    const t = themes[themeIndex];
+
+    document.body.style.background = t.bg;
+    document.body.style.color = t.text;
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.style.borderColor = t.accent;
+        card.style.boxShadow = `0 0 20px ${t.accent}`;
+    });
+
+    document.querySelectorAll('a').forEach(a => {
+        a.style.color = t.accent;
+    });
+
+    document.querySelector('h1').style.textShadow = `0 0 20px ${t.accent}, 0 0 40px ${t.accent}`;
+
+    let label = document.getElementById('theme-label');
+    if (!label) {
+        label = document.createElement('div');
+        label.id = 'theme-label';
+        label.style.position = 'fixed';
+        label.style.bottom = '20px';
+        label.style.right = '20px';
+        label.style.padding = '6px 12px';
+        label.style.borderRadius = '8px';
+        label.style.fontSize = '12px';
+        document.body.appendChild(label);
+    }
+
+    label.innerText = `Theme: ${t.name}`;
+    label.style.color = t.accent;
+    label.style.border = '1px solid ' + t.accent;
+}
+
+// particles
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+let particles=[];
+for(let i=0;i<120;i++){
+ particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5),vy:(Math.random()-0.5)});
+}
+
+function draw(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ for(let p of particles){
+ ctx.beginPath();
+ ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ ctx.fillStyle="cyan";
+ ctx.fill();
+ p.x+=p.vx; p.y+=p.vy;
+
+ for(let q of particles){
+ let dx=p.x-q.x, dy=p.y-q.y;
+ let dist=Math.sqrt(dx*dx+dy*dy);
+ if(dist<100){
+ ctx.beginPath();
+ ctx.moveTo(p.x,p.y);
+ ctx.lineTo(q.x,q.y);
+ ctx.strokeStyle="rgba(0,255,255,0.1)";
+ ctx.stroke();
+ }
+ }
+ }
+ requestAnimationFrame(draw);
+}
+
+draw();
+</script>
 
 </body>
 </html>
