@@ -3,105 +3,421 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B2krobbery | Student Developer</title>
+<title>Visal Vijay (B2krobbery) | Student Developer & Linux Enthusiast</title>
+<meta name="description" content="Portfolio of Visal Vijay (B2krobbery) - Student Developer specializing in Linux, Wayland, system programming, and responsive web development. Creator of the ICCK Diwali Website.">
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<!-- Open Graph / Social Sharing -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://b2krobbery.is-a.dev/">
+<meta property="og:title" content="Visal Vijay | Student Developer">
+<meta property="og:description" content="Linux & Open Source Developer working on Wayland, C++, and Web Development. Creator of the ICCK Diwali Website.">
+<meta property="og:image" content="https://github.com/B2krobbery.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://github.com/B2krobbery.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/a2d9d5c6f0.js" crossorigin="anonymous"></script>
 
 <style>
+:root {
+    --accent: #00ffff;
+    --accent-glow: rgba(0, 255, 255, 0.4);
+    --bg: #000000;
+    --text: #e5e7eb;
+    --text-muted: rgba(229, 231, 235, 0.8);
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(0, 255, 255, 0.3);
+    --input-bg: rgba(255, 255, 255, 0.05);
+}
+
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Orbitron', sans-serif;
-    background: black;
-    color: cyan;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
     overflow-x: hidden;
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, nav, .btn, .brand-font {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.5px;
 }
 
 canvas {
     position: fixed;
-    top:0;
-    left:0;
-    z-index:-1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
 }
 
 nav {
     position: fixed;
-    top:0;
-    width:100%;
-    padding:15px;
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(10px);
+    top: 0;
+    width: 100%;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 nav a {
-    color: cyan;
-    text-decoration:none;
-    transition:0.3s;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 nav a:hover {
-    text-shadow:0 0 10px cyan;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
 }
 
 .container {
-    text-align:center;
-    margin-top:120px;
-    padding:20px;
+    max-width: 960px;
+    margin: 110px auto 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.hero {
+    margin-bottom: 30px;
 }
 
 h1 {
-    font-size:60px;
-    text-shadow:0 0 20px cyan,0 0 40px cyan;
-    animation: glow 2s infinite alternate;
+    font-size: clamp(34px, 7vw, 62px);
+    color: var(--text);
+    text-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
+    animation: glow 2.5s infinite alternate ease-in-out;
 }
 
 @keyframes glow {
-    from { text-shadow:0 0 10px cyan; }
-    to { text-shadow:0 0 30px cyan,0 0 60px cyan; }
+    from { text-shadow: 0 0 12px var(--accent-glow); }
+    to { text-shadow: 0 0 28px var(--accent), 0 0 50px var(--accent-glow); }
 }
 
-#typing { margin-top:10px; height:30px; }
+h2 {
+    font-size: clamp(18px, 3.5vw, 24px);
+    color: var(--accent);
+    margin-top: 6px;
+    font-weight: 600;
+}
 
+#typing-container {
+    margin-top: 12px;
+    font-size: 16px;
+    color: var(--text-muted);
+    min-height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', monospace;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 18px;
+    background: var(--accent);
+    margin-left: 4px;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Card General Styling */
 .card {
-    margin:30px auto;
-    padding:25px;
-    max-width:400px;
-    border-radius:20px;
-    background: rgba(255,255,255,0.05);
-    border:1px solid cyan;
-    transition:0.4s;
+    margin: 24px auto;
+    padding: 28px;
+    border-radius: 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow:0 0 30px cyan;
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 0 25px var(--accent-glow);
 }
 
-.project { margin:15px 0; }
+.card-title {
+    margin-bottom: 18px;
+    font-size: 22px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Profile Card */
+.profile-card {
+    max-width: 520px;
+}
+
+.profile-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin-bottom: 14px;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow);
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.profile-handle {
+    font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.profile-bio {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+/* Projects Section */
+.projects-container {
+    max-width: 960px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.project-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.project-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 22px var(--accent-glow);
+}
+
+/* Featured Client Project Card */
+.project-item.featured {
+    grid-column: 1 / -1;
+    border: 1px solid var(--card-border);
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.08);
+}
+
+.featured-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000;
+    background: var(--accent);
+    padding: 4px 12px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    width: fit-content;
+}
+
+.project-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.project-org {
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.project-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.project-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text);
+}
+
+.project-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.project-link:hover {
+    text-shadow: 0 0 8px var(--accent-glow);
+    transform: translateX(3px);
+}
+
+/* Skills Tags */
+.skills-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 620px;
+    margin: 0 auto;
+}
 
 .tag {
-    display:inline-block;
-    border:1px solid cyan;
-    padding:6px 12px;
-    margin:5px;
-    border-radius:20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--accent);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.25s ease;
 }
 
-button {
-    margin-top:10px;
-    padding:10px 20px;
-    border:none;
-    background: cyan;
-    color:black;
-    cursor:pointer;
+.tag:hover {
+    background: var(--accent);
+    color: #000;
+    box-shadow: 0 0 15px var(--accent-glow);
+    transform: translateY(-2px);
 }
 
-footer { margin:40px 0; opacity:0.5; }
+/* Buttons */
+.btn {
+    margin-top: 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #000;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn:hover {
+    box-shadow: 0 0 18px var(--accent-glow);
+    transform: scale(1.03);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Contact Form */
+.contact-card {
+    max-width: 520px;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--input-bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+textarea.input {
+    resize: vertical;
+    min-height: 100px;
+}
+
+footer {
+    margin: 40px 0 20px 0;
+    font-size: 13px;
+    opacity: 0.65;
+}
+
+a.social-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+a.social-link:hover {
+    text-shadow: 0 0 8px var(--accent-glow);
+}
 </style>
 </head>
 
@@ -109,209 +425,331 @@ footer { margin:40px 0; opacity:0.5; }
 
 <canvas id="bg"></canvas>
 
-<!-- ✅ FIXED NAVBAR -->
+<!-- NAVBAR -->
 <nav>
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="#projects">Projects</a>
 <a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
 </nav>
 
 <div class="container">
+
+<!-- HERO -->
+<div class="hero">
 <h1>VISAL VIJAY</h1>
 <h2>B2krobbery</h2>
-<div id="typing"></div>
-
-<div class="card">
-<h3><i class="fas fa-user"></i> Profile</h3>
-<img src="https://github.com/B2krobbery.png" alt="profile" style="width:100px;border-radius:50%;margin-bottom:10px;border:2px solid cyan;">
-<h4>Visal Vijay</h4>
-<p>@B2krobbery</p>
-<p>ELC Engineering Student | Linux & Open Source Developer</p>
-<a href="https://github.com/B2krobbery">View GitHub</a>
+<div id="typing-container">
+<span id="typing-text"></span><span class="cursor"></span>
+</div>
 </div>
 
-<div class="card">
-<h3><i class="fas fa-user"></i> About</h3>
-<p>Linux-focused developer working on Wayland, Hyprland and system-level projects.</p>
-<a href="about.html">About</a>
+<!-- PROFILE CARD -->
+<div class="card profile-card">
+<h3 class="card-title"><i class="fas fa-user-astronaut"></i> Profile</h3>
+<img class="profile-img" src="https://github.com/B2krobbery.png" alt="Visal Vijay profile picture">
+<div class="profile-name">Visal Vijay</div>
+<div class="profile-handle">@B2krobbery</div>
+<p class="profile-bio">ELC Engineering Student | Linux & Open Source Developer</p>
+<a class="social-link" href="https://github.com/B2krobbery" target="_blank" rel="noopener noreferrer">
+<i class="fab fa-github"></i> View GitHub Profile
+</a>
 </div>
 
-<div class="card" id="projects">
-<h3><i class="fas fa-code"></i> Projects</h3>
-
-<div class="project">
-<strong>Waybar Contributions</strong>
-<p>Worked on debugging and fixing issues, including memory-related problems.</p>
-<a href="https://github.com/Alexays/Waybar" target="_blank">View Repo</a>
+<!-- ABOUT PREVIEW CARD -->
+<div class="card profile-card">
+<h3 class="card-title"><i class="fas fa-terminal"></i> About</h3>
+<p class="profile-bio">Linux-focused developer working on Wayland, Hyprland, system-level projects, and modern responsive web development.</p>
+<a class="social-link" href="about.html">Read Full Bio →</a>
 </div>
 
-<div class="project">
-<strong>Hyprland Work</strong>
-<p>Explored compositor behavior, tested configs, and analyzed crashes.</p>
-<a href="https://github.com/hyprwm/Hyprland" target="_blank">View Repo</a>
+<!-- PROJECTS SECTION -->
+<div class="card projects-container" id="projects">
+<h3 class="card-title"><i class="fas fa-code"></i> Projects & Contributions</h3>
+
+<div class="projects-grid">
+
+<!-- FEATURED: ICCK DIWALI WEBSITE -->
+<div class="project-item featured">
+<div>
+<span class="featured-badge"><i class="fas fa-star"></i> Featured Client Project</span>
+<div class="project-title">ICCK Diwali Celebration Portal</div>
+<div class="project-org"><i class="fas fa-landmark"></i> Indian Chamber of Commerce in Korea (ICCK)</div>
+<p class="project-desc">
+Designed and developed the official responsive event portal for ICCK's annual Diwali festival in South Korea. Built to showcase event schedules, cultural program highlights, ticket information, and celebratory media with seamless performance across mobile and desktop devices.
+</p>
+<div class="project-tags">
+<span class="project-tag">Production</span>
+<span class="project-tag">HTML5 / CSS3</span>
+<span class="project-tag">JavaScript</span>
+<span class="project-tag">Responsive UI</span>
+<span class="project-tag">Client Project</span>
+</div>
+</div>
+<div class="project-links">
+<a class="project-link" href="https://diwali.indochamkorea.org/" target="_blank" rel="noopener noreferrer">
+<i class="fas fa-external-link-alt"></i> Visit Live Website
+</a>
+</div>
 </div>
 
-<div class="project">
-<strong>Custom Tools</strong>
-<p>Personal experiments and small tools built while learning Linux systems.</p>
-<a href="https://github.com/B2krobbery" target="_blank">My GitHub</a>
+<!-- WAYBAR CONTRIBUTIONS -->
+<div class="project-item">
+<div>
+<div class="project-title">Waybar Contributions</div>
+<div class="project-org"><i class="fas fa-layer-group"></i> Wayland Desktop Ecosystem</div>
+<p class="project-desc">
+Contributed bug fixes and debugging to the popular Wayland status bar, investigating memory-related issues and helping maintain system stability.
+</p>
+<div class="project-tags">
+<span class="project-tag">C++</span>
+<span class="project-tag">Wayland</span>
+<span class="project-tag">Linux</span>
+<span class="project-tag">Debugging</span>
+</div>
+</div>
+<div class="project-links">
+<a class="project-link" href="https://github.com/Alexays/Waybar" target="_blank" rel="noopener noreferrer">
+<i class="fab fa-github"></i> View Repository
+</a>
+</div>
+</div>
+
+<!-- HYPRLAND WORK -->
+<div class="project-item">
+<div>
+<div class="project-title">Hyprland Exploration</div>
+<div class="project-org"><i class="fas fa-desktop"></i> Dynamic Tiling Compositor</div>
+<p class="project-desc">
+Explored Wayland compositor internals, tested advanced configurations, and analyzed crash dumps to understand Wayland protocols and window management.
+</p>
+<div class="project-tags">
+<span class="project-tag">Wayland</span>
+<span class="project-tag">Hyprland</span>
+<span class="project-tag">C++</span>
+<span class="project-tag">Linux</span>
+</div>
+</div>
+<div class="project-links">
+<a class="project-link" href="https://github.com/hyprwm/Hyprland" target="_blank" rel="noopener noreferrer">
+<i class="fab fa-github"></i> View Repository
+</a>
+</div>
+</div>
+
+<!-- CUSTOM TOOLS -->
+<div class="project-item">
+<div>
+<div class="project-title">Custom Tools & Experiments</div>
+<div class="project-org"><i class="fas fa-tools"></i> Open Source Utilities</div>
+<p class="project-desc">
+Personal utilities, configuration scripts, and small tools built while exploring Linux systems, automation, and low-level development.
+</p>
+<div class="project-tags">
+<span class="project-tag">Bash</span>
+<span class="project-tag">C++</span>
+<span class="project-tag">Git</span>
+<span class="project-tag">Automation</span>
+</div>
+</div>
+<div class="project-links">
+<a class="project-link" href="https://github.com/B2krobbery" target="_blank" rel="noopener noreferrer">
+<i class="fab fa-github"></i> My GitHub
+</a>
+</div>
 </div>
 
 </div>
+</div>
 
+<!-- SKILLS SECTION -->
 <div class="card" id="skills">
-<h3><i class="fas fa-bolt"></i> Skills</h3>
-<span class="tag">C++ (Learning)</span>
-<span class="tag">Linux</span>
-<span class="tag">Wayland</span>
-<span class="tag">Git</span>
+<h3 class="card-title"><i class="fas fa-bolt"></i> Skills & Technologies</h3>
+<div class="skills-wrapper">
+<span class="tag"><i class="fab fa-linux"></i> Linux</span>
+<span class="tag"><i class="fas fa-desktop"></i> Wayland</span>
+<span class="tag"><i class="fas fa-code"></i> C++ (Learning)</span>
+<span class="tag"><i class="fab fa-html5"></i> HTML5 / CSS3</span>
+<span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+<span class="tag"><i class="fab fa-git-alt"></i> Git</span>
+<span class="tag"><i class="fas fa-terminal"></i> Bash</span>
+</div>
 </div>
 
-<div class="card">
-<button onclick="toggleTheme()">Toggle Theme</button>
-<footer>Built by B2krobbery ⚡</footer>
+<!-- THEME SWITCHER -->
+<div class="card profile-card">
+<h3 class="card-title"><i class="fas fa-palette"></i> Customize Theme</h3>
+<button class="btn" onclick="toggleTheme()"><i class="fas fa-sync-alt"></i> Toggle Color Theme</button>
 </div>
 
-<div class="card" id="contact">
-<h3><i class="fas fa-envelope"></i> Contact</h3>
+<!-- CONTACT SECTION -->
+<div class="card contact-card" id="contact">
+<h3 class="card-title"><i class="fas fa-envelope"></i> Get In Touch</h3>
+<p class="profile-bio" style="margin-bottom:15px;">Have a question or want to collaborate? Send me a message below.</p>
 
 <form id="contact-form" action="https://formspree.io/f/xojplpyo" method="POST">
-
 <input type="hidden" name="_subject" value="New message from portfolio">
-
 <input class="input" type="text" name="name" placeholder="Your Name" required>
-
 <input class="input" type="email" name="email" placeholder="Your Email" required>
-
 <textarea class="input" name="message" placeholder="Your Message" required></textarea>
-
-<button type="submit">Send Message</button>
-
+<button class="btn" id="submit-btn" type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
 </form>
 
-<p id="status" style="margin-top:10px;font-size:14px;"></p>
-
+<p id="status" style="margin-top:14px;font-size:14px;font-weight:600;"></p>
 </div>
 
+<footer>
+Built with <i class="fas fa-bolt" style="color:var(--accent);"></i> by <strong>B2krobbery</strong> • Visal Vijay
+</footer>
+
 </div>
-
-<style>
-.input {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 8px;
-    border: 1px solid cyan;
-    background: transparent;
-    color: inherit;
-    font-family: inherit;
-}
-
-.input:focus {
-    outline: none;
-    box-shadow: 0 0 10px cyan;
-}
-</style>
 
 <script>
-// (UNCHANGED JS — SAFE)
-const form = document.getElementById('contact-form');
-const status = document.getElementById('status');
-
-form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const data = new FormData(form);
-
-    const response = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-    });
-
-    if (response.ok) {
-        status.innerText = "Message sent successfully ✔";
-        status.style.color = "lime";
-        form.reset();
-    } else {
-        status.innerText = "Failed to send message ❌";
-        status.style.color = "red";
-    }
-});
-
-const text = "Student Developer | Linux | System Programming";
-let i=0;
+// Typewriter effect
+const text = "Student Developer | Linux & Wayland | Web & System Programming";
+let i = 0;
+const typingElem = document.getElementById("typing-text");
 function type(){
- if(i<text.length){
- document.getElementById("typing").innerHTML+=text[i];
- i++;
- setTimeout(type,40);
- }
+    if(i < text.length){
+        typingElem.textContent += text[i];
+        i++;
+        setTimeout(type, 40);
+    }
 }
-window.onload=type;
+document.addEventListener("DOMContentLoaded", type);
+
+// Themes configuration
+const themes = [
+    { name: "Cyan", bg: "#000000", text: "#e5e7eb", accent: "#00ffff", glow: "rgba(0, 255, 255, 0.4)", cardBorder: "rgba(0, 255, 255, 0.3)", particleLine: "rgba(0, 255, 255, 0.12)" },
+    { name: "Blue", bg: "#0a0f1d", text: "#e5e7eb", accent: "#38bdf8", glow: "rgba(56, 189, 248, 0.4)", cardBorder: "rgba(56, 189, 248, 0.3)", particleLine: "rgba(56, 189, 248, 0.12)" },
+    { name: "Green", bg: "#0a140d", text: "#e5e7eb", accent: "#22c55e", glow: "rgba(34, 197, 94, 0.4)", cardBorder: "rgba(34, 197, 94, 0.3)", particleLine: "rgba(34, 197, 94, 0.12)" },
+    { name: "Yellow", bg: "#161305", text: "#e5e7eb", accent: "#facc15", glow: "rgba(250, 204, 21, 0.4)", cardBorder: "rgba(250, 204, 21, 0.3)", particleLine: "rgba(250, 204, 21, 0.12)" }
+];
 
 let themeIndex = 0;
-const themes = [
-    { name: "Cyan", bg: "#000000", text: "#e5e7eb", accent: "cyan" },
-    { name: "Blue", bg: "#0f172a", text: "#e5e7eb", accent: "#38bdf8" },
-    { name: "Green", bg: "#111827", text: "#e5e7eb", accent: "#22c55e" },
-    { name: "Yellow", bg: "#1a1a1a", text: "#e5e7eb", accent: "#facc15" }
-];
+let currentParticleColor = themes[0].accent;
+let currentParticleLine = themes[0].particleLine;
+
+function applyTheme(index){
+    const t = themes[index];
+    document.documentElement.style.setProperty('--bg', t.bg);
+    document.documentElement.style.setProperty('--text', t.text);
+    document.documentElement.style.setProperty('--accent', t.accent);
+    document.documentElement.style.setProperty('--accent-glow', t.glow);
+    document.documentElement.style.setProperty('--card-border', t.cardBorder);
+    currentParticleColor = t.accent;
+    currentParticleLine = t.particleLine;
+    try {
+        localStorage.setItem("b2k_theme", index);
+    } catch(e) {}
+}
 
 function toggleTheme(){
     themeIndex = (themeIndex + 1) % themes.length;
-    const t = themes[themeIndex];
-
-    document.body.style.background = t.bg;
-    document.body.style.color = t.text;
-
-    document.querySelectorAll('.card').forEach(card => {
-        card.style.borderColor = t.accent;
-        card.style.boxShadow = `0 0 20px ${t.accent}`;
-    });
-
-    document.querySelectorAll('a').forEach(a => {
-        a.style.color = t.accent;
-    });
-
-    document.querySelector('h1').style.textShadow = `0 0 20px ${t.accent}, 0 0 40px ${t.accent}`;
+    applyTheme(themeIndex);
 }
 
-const canvas=document.getElementById("bg");
-const ctx=canvas.getContext("2d");
-canvas.width=innerWidth;
-canvas.height=innerHeight;
+// Restore saved theme on startup
+try {
+    const savedTheme = localStorage.getItem("b2k_theme");
+    if(savedTheme !== null){
+        themeIndex = parseInt(savedTheme, 10) || 0;
+        applyTheme(themeIndex);
+    }
+} catch(e) {}
 
-let particles=[];
-for(let i=0;i<120;i++){
- particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5),vy:(Math.random()-0.5)});
+// Particle Canvas Animation with Auto-Resize
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+let particles = [];
+const particleCount = Math.min(100, Math.floor(window.innerWidth / 15));
+for(let p = 0; p < particleCount; p++){
+    particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8
+    });
 }
 
 function draw(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
- for(let p of particles){
- ctx.beginPath();
- ctx.arc(p.x,p.y,2,0,Math.PI*2);
- ctx.fillStyle="cyan";
- ctx.fill();
- p.x+=p.vx; p.y+=p.vy;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for(let p of particles){
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = currentParticleColor;
+        ctx.fill();
 
- for(let q of particles){
- let dx=p.x-q.x, dy=p.y-q.y;
- let dist=Math.sqrt(dx*dx+dy*dy);
- if(dist<100){
- ctx.beginPath();
- ctx.moveTo(p.x,p.y);
- ctx.lineTo(q.x,q.y);
- ctx.strokeStyle="rgba(0,255,255,0.1)";
- ctx.stroke();
- }
- }
- }
- requestAnimationFrame(draw);
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if(p.x < 0) p.x = canvas.width;
+        if(p.x > canvas.width) p.x = 0;
+        if(p.y < 0) p.y = canvas.height;
+        if(p.y > canvas.height) p.y = 0;
+
+        for(let q of particles){
+            let dx = p.x - q.x;
+            let dy = p.y - q.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if(dist < 100){
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(q.x, q.y);
+                ctx.strokeStyle = currentParticleLine;
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(draw);
 }
-
 draw();
+
+// Contact Form AJAX Handling with Spam Protection
+const form = document.getElementById('contact-form');
+const status = document.getElementById('status');
+const submitBtn = document.getElementById('submit-btn');
+
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    status.innerText = "";
+
+    try {
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            status.innerText = "Message sent successfully ✔";
+            status.style.color = "var(--accent)";
+            form.reset();
+        } else {
+            status.innerText = "Failed to send message ❌";
+            status.style.color = "#ef4444";
+        }
+    } catch(err) {
+        status.innerText = "Network error. Please try again later ❌";
+        status.style.color = "#ef4444";
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+    }
+});
 </script>
 
 </body>
